@@ -4,16 +4,18 @@
 #
 Name     : R-wooldridge
 Version  : 1.3.1
-Release  : 3
+Release  : 4
 URL      : https://cran.r-project.org/src/contrib/wooldridge_1.3.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/wooldridge_1.3.1.tar.gz
 Summary  : 111 Data Sets from "Introductory Econometrics: A Modern
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-formatR
+Requires: R-plm
 Requires: R-prais
 Requires: R-stargazer
 BuildRequires : R-formatR
+BuildRequires : R-plm
 BuildRequires : R-prais
 BuildRequires : R-stargazer
 BuildRequires : buildreq-R
@@ -23,21 +25,22 @@ BuildRequires : buildreq-R
 
 %prep
 %setup -q -c -n wooldridge
+cd %{_builddir}/wooldridge
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573483488
+export SOURCE_DATE_EPOCH=1589748956
 
 %install
-export SOURCE_DATE_EPOCH=1573483488
+export SOURCE_DATE_EPOCH=1589748956
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
